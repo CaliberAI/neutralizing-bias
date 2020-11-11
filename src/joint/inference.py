@@ -72,11 +72,11 @@ else:
         
 if ARGS.tagger_checkpoint:
     print('LOADING TAGGER FROM ' + ARGS.tagger_checkpoint)
-    tagging_model.load_state_dict(torch.load(ARGS.tagger_checkpoint))
+    tagging_model.load_state_dict(torch.load(ARGS.tagger_checkpoint, map_location='cpu'))
     print('DONE.')
 if ARGS.debias_checkpoint:
     print('LOADING DEBIASER FROM ' + ARGS.debias_checkpoint)
-    debias_model.load_state_dict(torch.load(ARGS.debias_checkpoint))
+    debias_model.load_state_dict(torch.load(ARGS.debias_checkpoint, map_location='cpu'))
     print('DONE.')
 
 
@@ -91,7 +91,7 @@ if ARGS.checkpoint is not None and os.path.exists(ARGS.checkpoint):
     # TODO(rpryzant): is there a way to do this more elegantly? 
     # https://pytorch.org/tutorials/beginner/saving_loading_models.html#saving-loading-model-across-devices
     if CUDA:
-        joint_model.load_state_dict(torch.load(ARGS.checkpoint))
+        joint_model.load_state_dict(torch.load(ARGS.checkpoint, map_location='cpu'))
         joint_model = joint_model.cuda()
     else:
         joint_model.load_state_dict(torch.load(ARGS.checkpoint, map_location='cpu'))

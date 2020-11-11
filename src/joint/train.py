@@ -119,7 +119,7 @@ if ARGS.freeze_bert:
 
 if ARGS.tagger_checkpoint is not None and os.path.exists(ARGS.tagger_checkpoint):
     print('LOADING TAGGER FROM ' + ARGS.tagger_checkpoint)
-    tag_model.load_state_dict(torch.load(ARGS.tagger_checkpoint))
+    tag_model.load_state_dict(torch.load(ARGS.tagger_checkpoint, map_location='cpu'))
     print('...DONE')
 else:
     print('TRAINING TAGGER...')
@@ -186,7 +186,7 @@ num_train_steps = (num_train_examples * 40)
 
 if ARGS.debias_checkpoint is not None and os.path.exists(ARGS.debias_checkpoint):
     print('LOADING DEBIASER FROM ' + ARGS.debias_checkpoint)
-    debias_model.load_state_dict(torch.load(ARGS.debias_checkpoint))
+    debias_model.load_state_dict(torch.load(ARGS.debias_checkpoint, map_location='cpu'))
     print('...DONE')
 
 elif ARGS.pretrain_data:
