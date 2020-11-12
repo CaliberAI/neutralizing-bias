@@ -70,6 +70,14 @@ python joint/inference.py \
        --debias_checkpoint train_concurrent/model_X.ckpt
 ```
 
+Minimum args are:
+```
+python joint/inference.py \
+  --inference_output TEST/output.txt \
+  --working_dir TEST/ \
+  --test test.data
+```
+
 Evaluations and decodings will go in your working directory. 
 
 
