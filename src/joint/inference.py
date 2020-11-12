@@ -21,7 +21,9 @@ import utils as joint_utils
 
 
 
-assert ARGS.inference_output, "Need to specify inference_output arg!"
+assert ARGS.inference_output, "Need to specify inference_output arg e.g. --inference_output TEST"
+assert ARGS.working_dir, "Need to specify working_dir arg e.g. --working_dir TEST"
+assert ARGS.test, "Need to specify test arg e.g. --test /tmp/WNC/debiased.word.test"
 
 
 # # # # # # # # ## # # # ## # # DATA # # # # # # # # ## # # # ## # #
